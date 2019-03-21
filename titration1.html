@@ -1,0 +1,249 @@
+<style>
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+   }
+
+/* Style the topnav links */
+.topnav a {
+  display: inline-block;
+  color: #f2f2f2;
+  font-size:20px;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Style the content */
+.content {
+  background-color: #ddd;
+  padding: 10px;
+  height: 315px; /* Should be removed. Only for demonstration */
+}
+
+/* Style the footer */
+.footer {
+  background-color: #f1f1f1;
+  padding: 10px;
+}
+.beaker {
+
+  background-color: #36C1D6;
+
+  width: 100px;
+  height: 100px;
+  position: relative;
+  top:130px;
+  left:250px;
+  transition: background-color 0.7s ease;
+
+}
+.squared {
+    background-color: #d3d3d3;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 0;
+
+
+}
+
+#burette{
+  position: relative;
+  top:0px;
+  left:225px;
+  height:200px; 
+  width:auto
+}
+
+.drop {
+  position: absolute;
+  top:100px
+  width: 0px;
+  height: 0px;
+  left:395px;
+  background-color: #36C1D6;
+  border-radius: 50% 1px 50% 50%;
+  -webkit-transform: rotate(-45deg);  
+  -webkit-animation: drip 0.4s linear;
+}
+ .drop:nth-child(2) {  
+  border-radius: 50%;
+  -webkit-transform: rotate(0deg);
+} 
+
+   
+@-webkit-keyframes drip {
+ 0% {
+    width: 0px;
+    height: 0px;
+    top: 650px;
+  }
+  50% {
+    width: 10px;
+    height: 10px;
+    top: 720px;
+  }
+  100% { 
+    width: 10px;
+    height: 10px; 
+    top: 860px;
+  }
+}
+ 
+
+
+
+
+
+</style>
+<!DOCTYPE html>
+<html>
+<body>
+
+<head>
+<link rel="stylesheet" href="1.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="default.css">
+<link rel="stylesheet" href="override.css">
+<title>Vlabs@NITK-Surathkal</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        </head>
+        
+<body>
+<div id="container">
+  <div id="experiment">
+        <!-- The Experiment Document Container-->
+        <!-- The lab Header contains the logo and the name of the lab,
+  usually displayed on the top of the page-->
+
+        <header class="default" id="experiment-header">
+<div class="logo" id="experiment-header-logo">
+<img src="logo.jpg" alt="vlab">
+                <!-- Write the name of your lab and link it to the home 
+      page of your lab (h1 tag is preferred while writing your 
+      lab name)-->
+                <!-- Add any additional element you want to add to the lab 
+    header, For example : Help (Enclosing them with suitable 
+    div is recommended)-->
+        </header><!-- The lab article is the main content area where all the 
+  experiment content sits-->
+<div class="topnav">
+<a href="1.html">Home</a>
+  <a href="theory.html">Theory</a>
+  <a href="procedure.html">Procedure</a>
+ <a href="eval.html">Evaluate</a>
+ <a href="titration.html">Simulator</a>
+ <a href="indexs1.html">Self Assesment</a>
+ <a href="reference.html">Reference</a>
+</div></div>
+
+  <header class="heading" id="experiment-article-heading">
+             Batch Adsorption         
+            </header>
+    <div class="alert alert-success fade out" id="bsalert" style="padding-left:200px;">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Well done!</strong> Titration point reached!
+		  <a href="titration2.html"><p>
+<button id="back" class="btn btn-success" >Submit Titer Value</button>
+</a>
+
+  </div>
+    <div class="container">
+		<div class="quizArea" style="padding-left:100px;">
+	<h1>Titration with 0.5 g of Adsorbate:</h1></div>
+              <img src="burette.png" style="" id="burette">
+              <div class="experiment">
+                  <div class="drop"></div>
+                  <div class="drop"></div>
+              </div>
+              <div class="beaker">
+                  <div class="squared"></div>
+                </div>
+                <label>Increment: </label>
+                <input type="number" max="1" value="1" id="increment" class="form-control" style="width: 100px"><br>
+                <div class="badge badge-primary">
+                  <span class="indicator badge badge-primary">0</span><span>mL</span>
+                </div>
+                  <br>
+                  <br>
+                <button id="drop" class="btn btn-success">Drop</button>
+        </div>
+
+
+
+  <div class="container">
+    <div class="row">
+    <div class="col-md-6 col-lg-6">
+        
+  </div>
+
+    
+  </div>
+</div>
+
+<div class="footer">
+<img src="vlab1.png" alt="vlab" width="100" height="100">
+  <p>Presented by ACM-NITK and CSD</p>
+</div>
+
+
+</body>
+
+</html>
+
+<script>
+
+  var point = 10;
+  function toggleAlert(){
+    $(".alert").toggleClass('in out'); 
+    return false; // Keep close.bs.alert event from removing from DOM
+}
+
+
+    $( document ).ready(function() {
+      $('#bsalert').on('close.bs.alert', toggleAlert)
+
+      $("#drop").on( "click", function() {
+        var drop = $('.experiment').clone();
+         $('.experiment').remove();
+         $('body').append(drop);
+         setTimeout(
+        function() 
+        {
+          $(".squared").height( $(".squared").height()-$("#increment").val() )
+          console.log($(".squared").height())
+          console.log($(".beaker").height())
+
+          $(".indicator").text($(".beaker").height()-$(".squared").height())
+          if($(".beaker").height()-$(".squared").height() >= point)
+            {
+              $(".beaker").css("background-color","purple");
+              toggleAlert();
+
+              $("#drop").off('click').attr("disabled", true);
+
+            }
+
+        }, 400);
+        
+
+
+    })
+    });
+</script>
